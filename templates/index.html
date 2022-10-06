@@ -7,29 +7,46 @@
 {% block body %}
     {% if tasks|length < 1 %}
         <p>There are no tasks. Create one below!</p>
-    {% else %}
-        <table>
-            <tr>
-                <th>Task</th>
-                <th>Added</th>
-                <th>Actions</th>
-            </tr>
-            {% for task in tasks %}
-                <tr>
-                    <td>{{ task.content }}</td>
-                    <td>{{ task.date_created.date() }}</td>
-                    <td>
-                        <a href="{{ url_for('update', id=task.id) }}">Update</a>
-                        <br>
-                        <a href="{{ url_for('delete', id=task.id) }}">Delete</a>
-                    </td>
-                </tr>
-            {% endfor %}
-        </table>
     {% endif %}
 
-    <form action="/" method="POST">
-        <input type="text" name="content" id="content">
-        <input type="submit" value="Add Task">
-    </form>
+    <table class="w3-table-all w3-centered">
+        <tr>
+            <th>Task</th>
+            <th>Added</th>
+            <th>Actions</th>
+        </tr>
+        {% for task in tasks %}
+            <tr>
+                <td>{{ task.content }}</td>
+                <td>{{ task.date_created.date() }}</td>
+                <td>
+                    <a href="{{ url_for('update', id=task.id) }}">Update</a>
+                    <br>
+                    <a href="{{ url_for('delete', id=task.id) }}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        
+        <tr>
+            <form id="addtask" action="/" method="POST">
+                <td>
+                    <input type="text" name="content" id="content">
+                </td>
+                <td></td>
+                <td>
+                    <!--Taken from https://stackoverflow.com/questions/10039968/submit-form-using-a-tag-->
+                    <a href="javascript:void()" onclick="document.getElementById('addtask').submit();">Add task</a>
+                </td>
+            </form>
+        </tr>
+    </table>
+
+    <!--
+    <div class="w3-container w3-margin-top">
+        <form action="/" method="POST">
+            <input type="text" name="content" id="content">
+            <input type="submit" value="Add Task">
+        </form>
+    </div>
+    -->
 {% endblock %}

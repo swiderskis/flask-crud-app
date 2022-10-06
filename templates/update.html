@@ -5,7 +5,7 @@
 {% block head %}Update Task{% endblock %}
 
 {% block body %}
-    <div class="form">
+    <div class="w3-container w3-center">
         <form action="{{ url_for('update', id=task.id) }}" method="POST">
             <input type="text" name="content" id="content" value="{{ task.content }}">
             <input type="submit" value="Update">
