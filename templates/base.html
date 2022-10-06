@@ -10,7 +10,13 @@
 
     <div class="w3-row">
         <div class="w3-quarter"><p></p></div>
-        <div class="w3-half"><h1 style="text-align: center">{% block head %}{% endblock %}</h1></div>
+        <div class="w3-half">
+            <h1 style="text-align: center">{% block head %}{% endblock %}</h1>
+            <div class="w3-bar w3-border w3-light-grey">
+                <a href="{{ url_for('index') }}" class="w3-bar-item w3-button">Task Master</a>
+                <a href="{{ url_for('completed_tasks') }}" class="w3-bar-item w3-button">Completed Tasks</a>
+              </div>
+        </div>
         <div class="w3-quarter"><p></p></div>
     </div>
     

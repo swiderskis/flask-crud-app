@@ -10,7 +10,8 @@ db.init_app(app)
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(200), nullable=False)
-    #completed = db.Column(db.Boolean, default=False)
+    completed = db.Column(db.Boolean, default=False)
+    date_completed = db.Column(db.DateTime, default=None)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
@@ -31,8 +32,13 @@ def index():
             return redirect('/error')
 
     else:
-        tasks = Todo.query.order_by(Todo.date_created).all()
+        tasks = Todo.query.filter_by(completed=False).order_by(Todo.date_created).all()
         return render_template('index.html', tasks=tasks)
+
+@app.route('/completed_tasks')
+def completed_tasks():
+    tasks = Todo.query.filter_by(completed=True).order_by(Todo.date_created).all()
+    return render_template('completed_tasks.html', tasks=tasks)
 
 @app.route('/delete/<int:id>')
 def delete(id):
@@ -62,6 +68,20 @@ def update(id):
 
     else:
         return render_template('update.html', task=task)
+
+@app.route('/mark_complete/<int:id>', methods=['POST', 'GET'])
+def mark_complete(id):
+    task_to_complete = Todo.query.get_or_404(id)
+    task_to_complete.completed = True
+    task_to_complete.date_completed = datetime.utcnow()
+
+    try:
+        db.session.commit()
+        return redirect('/')
+        
+    except:
+        return redirect('/error')
+        
 
 @app.route('/error')
 def error():
