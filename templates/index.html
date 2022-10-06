@@ -1,13 +1,10 @@
 {% extends 'base.html' %}
 
-{% block head %}
-<title>Task Master</title>
-{% endblock %}
+{% block title %}Task Master{% endblock %}
+
+{% block head %}Task Master{% endblock %}
 
 {% block body %}
-<div class="content">
-    <h1>Task Master</h1>
-
     {% if tasks|length < 1 %}
         <p>There are no tasks. Create one below!</p>
     {% else %}
@@ -35,5 +32,4 @@
         <input type="text" name="content" id="content">
         <input type="submit" value="Add Task">
     </form>
-</div>
 {% endblock %}
