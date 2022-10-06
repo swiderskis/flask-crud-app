@@ -28,7 +28,7 @@ def index():
             return redirect('/')
 
         except:
-            return render_template('error.html')
+            return redirect('/error')
 
     else:
         tasks = Todo.query.order_by(Todo.date_created).all()
@@ -44,7 +44,7 @@ def delete(id):
         return redirect('/')
 
     except:
-        return render_template('error.html')
+        return redirect('/error')
 
 @app.route('/update/<int:id>', methods=['POST', 'GET'])
 def update(id):
@@ -56,12 +56,16 @@ def update(id):
         try:
             db.session.commit()
             return redirect('/')
-            
+
         except:
-            return render_template('error.html')
+            return redirect('/error')
 
     else:
         return render_template('update.html', task=task)
+
+@app.route('/error')
+def error():
+    return render_template('error.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
