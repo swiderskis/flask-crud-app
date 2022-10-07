@@ -25,7 +25,7 @@ virtualenv env
 Activate your virtual environment using:
 
 ```
-source bin/Scripts/activate
+source env/Scripts/activate
 ```
 
 Install Flask and SQLAlchemy using:
