@@ -6,32 +6,44 @@ These installation instructions are for Windows. Mac and Linux setup may differ 
 
 Install the latest version of Python 3, found [here](https://www.python.org/downloads/). Your current Python installation version can be checked using:
 
-```python --version```
+```
+python --version
+```
 
-Set up a virtual environment using:
+Install virtualenv using:
 
-```pip install virtualenv```
+```
+pip install virtualenv
+```
 
-and set it up using:
+and set it up in the project folder using:
 
-```virtualenv env```
+```
+virtualenv env
+```
 
 Activate your virtual environment using:
 
-```source bin/Scripts/activate```
+```
+source bin/Scripts/activate
+```
 
 Install Flask and SQLAlchemy using:
 
-```pip install flask flask-sqlalchemy```
+```
+pip install flask flask-sqlalchemy
+```
 
 Create the database using:
 
-```python create_all_dbs.py```
+```
+python create_all_dbs.py
+```
 
 Finally, run the app using:
 
-```python app.py```
+```
+python app.py
+```
 
-This will host the web app on:
-
-```localhost:5000```
+This will host the web app on `localhost:5000`.
