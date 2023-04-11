@@ -1,5 +1,7 @@
 # flask-taskmaster-webapp
-Task master CRUD web app built using [Flask](https://flask.palletsprojects.com/), built upon on [this YouTube tutorial](https://www.youtube.com/watch?v=Z1RJmh_OqeA). Allows users to add items a to-do list, update their descriptions, delete entries, and mark them as complete.
+A task master CRUD web app, allowing users to add items to a to-do list, update their descriptions, mark them as complete, and delete entries 📝
+
+Built using [Flask](https://flask.palletsprojects.com/), based upon on [this](https://www.youtube.com/watch?v=Z1RJmh_OqeA) YouTube tutorial.
 
 ## Installation
 These installation instructions are for Windows. Mac and Linux setup may differ slightly.
